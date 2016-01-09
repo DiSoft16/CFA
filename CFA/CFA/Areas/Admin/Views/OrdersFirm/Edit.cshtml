@@ -1,0 +1,118 @@
+﻿@model CFA.Models.OrdersFirm
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>OrdersFirm</legend>
+
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            <div class="col-sm-8">
+                @Html.LabelFor(model => model.dateStart)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-8">
+                @Html.TextBox("dateStart", null, new
+                   {
+                       @class = "form-control date-order",
+                       placeholder = "DateStart",
+                   })
+                @Html.ValidationMessageFor(model => model.dateStart)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-8">
+                @Html.LabelFor(model => model.dateExecution)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-8">
+                @Html.TextBox("dateExecution", null, new
+                   {
+                       @class = "form-control date-order",
+                       placeholder = "DateExecution",
+                   })
+                @Html.ValidationMessageFor(model => model.dateExecution)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-8">
+                @Html.LabelFor(model => model.hardwareId, "InfoHardware")
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-8">
+                @Html.DropDownListFor(model => model.hardwareId, new SelectList(ViewBag.HardwareList, "Id", "name"),
+              "Select type...", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.hardwareId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-8">
+                @Html.LabelFor(model => model.numb)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-8">
+                @Html.TextBoxFor(model => model.numb, new { @class = "form-control", type = "text" })
+                @Html.ValidationMessageFor(model => model.numb)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-8">
+                @Html.LabelFor(model => model.firmId, "InfoFirm")
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-8">
+                @Html.DropDownListFor(model => model.firmId, new SelectList(ViewBag.FirmList, "Id", "name"),
+              "Select type...", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.firmId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-8">
+                @Html.LabelFor(model => model.executeId, "OrdersExecute")
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-8">
+                @Html.DropDownListFor(model => model.executeId, new SelectList(ViewBag.ExecuteList, "Id", "message"),
+              "Select type...", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.executeId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-8">
+                <button type="submit" class="btn btn-primary edit-button">Save</button>
+            </div>
+        </div>
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

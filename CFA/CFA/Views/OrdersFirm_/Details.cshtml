@@ -1,0 +1,43 @@
+﻿@model CFA.Models.OrdersFirm
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>OrdersFirm</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.date)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.date)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.numb)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.numb)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.InfoHardware.name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.InfoHardware.name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.InfoFirm.phone)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.InfoFirm.phone)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

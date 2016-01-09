@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5612a5b0b9524e29ba351054c033f51e" Name="Диаграмма1" ZoomLevel="59">
+        <EntityTypeShape EntityType="Model.BrandHardware" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.InfoFirm" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.InfoHardware" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.OrdersExecute" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.OrdersFirm" Width="1.5" PointX="5.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.OrdersUser" Width="1.5" PointX="8.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Table" Width="1.5" PointX="5.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TypeHardware" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.UserProfile" Width="1.5" PointX="6" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.webpages_Membership" Width="1.5" PointX="8.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.webpages_OAuthMembership" Width="1.5" PointX="5.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.webpages_Roles" Width="1.5" PointX="3.75" PointY="12.25" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK_InfoHardware_BrandHardware" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_OrdersFirm_InfoFirm" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_InfoHardware_TypeHardware" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_OrdersFirm_InfoHardware" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_OrdersUser_InfoHardware" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_OrdersFirm_OrdersExecute" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_OrdersUser_OrdersExecute" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_OrdersUser_UserProfile" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.webpages_UsersInRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

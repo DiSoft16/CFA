@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище ComputerFirmModelContainer" CdmEntityContainer="ComputerFirmEntities">
+    <EntitySetMapping Name="InfoFirm">
+      <EntityTypeMapping TypeName="ComputerFirmModel.InfoFirm">
+        <MappingFragment StoreEntitySet="InfoFirm">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InfoHardware">
+      <EntityTypeMapping TypeName="ComputerFirmModel.InfoHardware">
+        <MappingFragment StoreEntitySet="InfoHardware">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="numbAvailable" ColumnName="numbAvailable" />
+          <ScalarProperty Name="numbOrder" ColumnName="numbOrder" />
+          <ScalarProperty Name="cost" ColumnName="cost" />
+          <ScalarProperty Name="typeId" ColumnName="typeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InfoUser">
+      <EntityTypeMapping TypeName="ComputerFirmModel.InfoUser">
+        <MappingFragment StoreEntitySet="InfoUser">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrdersFirm">
+      <EntityTypeMapping TypeName="ComputerFirmModel.OrdersFirm">
+        <MappingFragment StoreEntitySet="OrdersFirm">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="numb" ColumnName="numb" />
+          <ScalarProperty Name="hardwareId" ColumnName="hardwareId" />
+          <ScalarProperty Name="firmId" ColumnName="firmId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrdersUser">
+      <EntityTypeMapping TypeName="ComputerFirmModel.OrdersUser">
+        <MappingFragment StoreEntitySet="OrdersUser">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="numb" ColumnName="numb" />
+          <ScalarProperty Name="HardwareId" ColumnName="HardwareId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TypeHardware">
+      <EntityTypeMapping TypeName="ComputerFirmModel.TypeHardware">
+        <MappingFragment StoreEntitySet="TypeHardware">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

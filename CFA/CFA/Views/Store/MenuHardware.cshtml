@@ -1,0 +1,14 @@
+﻿@model IEnumerable<CFA.Models.TypeHardware>
+<div class="panel panel-primary">
+    <div class="panel-heading">Select Type Hardware</div>
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            @foreach (var type in Model)
+            {
+                <li role="presentation">@Html.ActionLink(type.name,
+                "Browse", "Store",
+                new { TypeHardware = type.name }, null)</li>
+            }
+        </ul>
+    </div>
+</div>

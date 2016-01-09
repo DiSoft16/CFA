@@ -1,0 +1,130 @@
+﻿@model CFA.Models.OrdersUser
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>OrdersUser</legend>
+
+        <div class="form-group">
+            <div class="col-sm-8">
+                @Html.LabelFor(model => model.dateStart)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-8">
+                @Html.TextBox("dateStart", null, new
+                   {
+                       @class = "form-control date-order",
+                       placeholder = "DateStart",
+                   })
+                @Html.ValidationMessageFor(model => model.dateStart)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-8">
+                @Html.LabelFor(model => model.dateExecution)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-8">
+                @Html.TextBox("dateExecution", null, new
+                   {
+                       @class = "form-control date-order",
+                       placeholder = "DateExecution",
+                   })
+                @Html.ValidationMessageFor(model => model.dateExecution)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-8">
+                @Html.LabelFor(model => model.InfoHardware.BrandId, "BrandHardware")
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-8">
+                @Html.DropDownListFor(model => model.InfoHardware.BrandId, new SelectList(ViewBag.BrandList, "Id", "name"),
+              "Select type", new { @class = "form-control", id = "brandHardware" })
+                @Html.ValidationMessageFor(model => model.InfoHardware.BrandId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-8">
+                @Html.LabelFor(model => model.HardwareId, "InfoHardware")
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-8">
+                @Html.DropDownListFor(model => model.HardwareId, new SelectList(ViewBag.HardwareList, "Id", "name"),
+              "Select type...", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.HardwareId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-8">
+                @Html.LabelFor(model => model.numb)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-8">
+                @Html.TextBoxFor(model => model.numb, new { @class = "form-control", type = "text" })
+                @Html.ValidationMessageFor(model => model.numb)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-8">
+                @Html.LabelFor(model => model.UserId, "UserProfile")
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-8">
+                @Html.DropDownListFor(model => model.UserId, new SelectList(ViewBag.UserList, "UserId", "UserName"),
+              "Select type...", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.UserId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-8">
+                @Html.LabelFor(model => model.ExecuteId, "OrdersExecute")
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-8">
+                @Html.DropDownListFor(model => model.ExecuteId, new SelectList(ViewBag.ExecuteList, "Id", "message"),
+              "Select type...", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ExecuteId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-8">
+                <button type="submit" class="btn btn-primary edit-button">Create</button>
+            </div>
+        </div>
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

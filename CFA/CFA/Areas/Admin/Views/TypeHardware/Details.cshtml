@@ -1,0 +1,27 @@
+﻿@model CFA.Models.TypeHardware
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h4>TypeHardware</h4>
+    </div>
+
+    <div class="list-group">
+        <a class="list-group-item">
+            <h4 class="list-group-item-heading">@Html.DisplayNameFor(model => model.name)</h4>
+            <p class="list-group-item-text">@Html.DisplayFor(model => model.name)</p>
+        </a>
+    </div>
+
+    <div class="col-sm-1">
+        <a href="/TypeHardware/Edit/@Model.Id" class="btn btn-primary edit-button">Edit</a>
+    </div>
+    <div class="col-sm-1">
+        <a href="/TypeHardware/Index" class="btn btn-primary edit-button">Back</a>
+    </div>
+</div>

@@ -1,0 +1,288 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="ComputerFirmEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="BrandHardwares" EntityType="Model.BrandHardware" />
+    <EntitySet Name="InfoFirms" EntityType="Model.InfoFirm" />
+    <EntitySet Name="InfoHardwares" EntityType="Model.InfoHardware" />
+    <EntitySet Name="OrdersExecutes" EntityType="Model.OrdersExecute" />
+    <EntitySet Name="OrdersFirms" EntityType="Model.OrdersFirm" />
+    <EntitySet Name="OrdersUsers" EntityType="Model.OrdersUser" />
+    <EntitySet Name="Tables" EntityType="Model.Table" />
+    <EntitySet Name="TypeHardwares" EntityType="Model.TypeHardware" />
+    <EntitySet Name="UserProfiles" EntityType="Model.UserProfile" />
+    <EntitySet Name="webpages_Membership" EntityType="Model.webpages_Membership" />
+    <EntitySet Name="webpages_OAuthMembership" EntityType="Model.webpages_OAuthMembership" />
+    <EntitySet Name="webpages_Roles" EntityType="Model.webpages_Roles" />
+    <AssociationSet Name="FK_InfoHardware_BrandHardware" Association="Model.FK_InfoHardware_BrandHardware">
+      <End Role="BrandHardware" EntitySet="BrandHardwares" />
+      <End Role="InfoHardware" EntitySet="InfoHardwares" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrdersFirm_InfoFirm" Association="Model.FK_OrdersFirm_InfoFirm">
+      <End Role="InfoFirm" EntitySet="InfoFirms" />
+      <End Role="OrdersFirm" EntitySet="OrdersFirms" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InfoHardware_TypeHardware" Association="Model.FK_InfoHardware_TypeHardware">
+      <End Role="TypeHardware" EntitySet="TypeHardwares" />
+      <End Role="InfoHardware" EntitySet="InfoHardwares" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrdersFirm_InfoHardware" Association="Model.FK_OrdersFirm_InfoHardware">
+      <End Role="InfoHardware" EntitySet="InfoHardwares" />
+      <End Role="OrdersFirm" EntitySet="OrdersFirms" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrdersUser_InfoHardware" Association="Model.FK_OrdersUser_InfoHardware">
+      <End Role="InfoHardware" EntitySet="InfoHardwares" />
+      <End Role="OrdersUser" EntitySet="OrdersUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrdersFirm_OrdersExecute" Association="Model.FK_OrdersFirm_OrdersExecute">
+      <End Role="OrdersExecute" EntitySet="OrdersExecutes" />
+      <End Role="OrdersFirm" EntitySet="OrdersFirms" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrdersUser_OrdersExecute" Association="Model.FK_OrdersUser_OrdersExecute">
+      <End Role="OrdersExecute" EntitySet="OrdersExecutes" />
+      <End Role="OrdersUser" EntitySet="OrdersUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrdersUser_UserProfile" Association="Model.FK_OrdersUser_UserProfile">
+      <End Role="UserProfile" EntitySet="UserProfiles" />
+      <End Role="OrdersUser" EntitySet="OrdersUsers" />
+    </AssociationSet>
+    <AssociationSet Name="webpages_UsersInRoles" Association="Model.webpages_UsersInRoles">
+      <End Role="webpages_Roles" EntitySet="webpages_Roles" />
+      <End Role="UserProfile" EntitySet="UserProfiles" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="BrandHardware">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="InfoHardwares" Relationship="Model.FK_InfoHardware_BrandHardware" FromRole="BrandHardware" ToRole="InfoHardware" />
+  </EntityType>
+  <EntityType Name="InfoFirm">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="phone" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="email" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="address" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="OrdersFirms" Relationship="Model.FK_OrdersFirm_InfoFirm" FromRole="InfoFirm" ToRole="OrdersFirm" />
+  </EntityType>
+  <EntityType Name="InfoHardware">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="numbAvailable" Type="Int32" />
+    <Property Name="numbOrder" Type="Int32" />
+    <Property Name="cost" Type="Int32" />
+    <Property Name="fname" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="typeId" Type="Int32" Nullable="false" />
+    <Property Name="BrandId" Type="Int32" />
+    <Property Name="describe" Type="String" MaxLength="1024" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="BrandHardware" Relationship="Model.FK_InfoHardware_BrandHardware" FromRole="InfoHardware" ToRole="BrandHardware" />
+    <NavigationProperty Name="TypeHardware" Relationship="Model.FK_InfoHardware_TypeHardware" FromRole="InfoHardware" ToRole="TypeHardware" />
+    <NavigationProperty Name="OrdersFirms" Relationship="Model.FK_OrdersFirm_InfoHardware" FromRole="InfoHardware" ToRole="OrdersFirm" />
+    <NavigationProperty Name="OrdersUsers" Relationship="Model.FK_OrdersUser_InfoHardware" FromRole="InfoHardware" ToRole="OrdersUser" />
+  </EntityType>
+  <EntityType Name="OrdersExecute">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="message" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="OrdersFirms" Relationship="Model.FK_OrdersFirm_OrdersExecute" FromRole="OrdersExecute" ToRole="OrdersFirm" />
+    <NavigationProperty Name="OrdersUsers" Relationship="Model.FK_OrdersUser_OrdersExecute" FromRole="OrdersExecute" ToRole="OrdersUser" />
+  </EntityType>
+  <EntityType Name="OrdersFirm">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="dateStart" Type="DateTime" Precision="3" />
+    <Property Name="numb" Type="Int32" Nullable="false" />
+    <Property Name="hardwareId" Type="Int32" Nullable="false" />
+    <Property Name="firmId" Type="Int32" Nullable="false" />
+    <Property Name="executeId" Type="Int32" Nullable="false" />
+    <Property Name="dateExecution" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="InfoFirm" Relationship="Model.FK_OrdersFirm_InfoFirm" FromRole="OrdersFirm" ToRole="InfoFirm" />
+    <NavigationProperty Name="InfoHardware" Relationship="Model.FK_OrdersFirm_InfoHardware" FromRole="OrdersFirm" ToRole="InfoHardware" />
+    <NavigationProperty Name="OrdersExecute" Relationship="Model.FK_OrdersFirm_OrdersExecute" FromRole="OrdersFirm" ToRole="OrdersExecute" />
+  </EntityType>
+  <EntityType Name="OrdersUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="dateStart" Type="DateTime" Precision="3" />
+    <Property Name="numb" Type="Int32" Nullable="false" />
+    <Property Name="HardwareId" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="ExecuteId" Type="Int32" Nullable="false" />
+    <Property Name="dateExecution" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="InfoHardware" Relationship="Model.FK_OrdersUser_InfoHardware" FromRole="OrdersUser" ToRole="InfoHardware" />
+    <NavigationProperty Name="OrdersExecute" Relationship="Model.FK_OrdersUser_OrdersExecute" FromRole="OrdersUser" ToRole="OrdersExecute" />
+    <NavigationProperty Name="UserProfile" Relationship="Model.FK_OrdersUser_UserProfile" FromRole="OrdersUser" ToRole="UserProfile" />
+  </EntityType>
+  <EntityType Name="Table">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TypeHardware">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="InfoHardwares" Relationship="Model.FK_InfoHardware_TypeHardware" FromRole="TypeHardware" ToRole="InfoHardware" />
+  </EntityType>
+  <EntityType Name="UserProfile">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="phone" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="email" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="address" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="OrdersUsers" Relationship="Model.FK_OrdersUser_UserProfile" FromRole="UserProfile" ToRole="OrdersUser" />
+    <NavigationProperty Name="webpages_Roles" Relationship="Model.webpages_UsersInRoles" FromRole="UserProfile" ToRole="webpages_Roles" />
+  </EntityType>
+  <EntityType Name="webpages_Membership">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="ConfirmationToken" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="IsConfirmed" Type="Boolean" />
+    <Property Name="LastPasswordFailureDate" Type="DateTime" Precision="3" />
+    <Property Name="PasswordFailuresSinceLastSuccess" Type="Int32" Nullable="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="PasswordChangedDate" Type="DateTime" Precision="3" />
+    <Property Name="PasswordSalt" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="PasswordVerificationToken" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="PasswordVerificationTokenExpirationDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="webpages_OAuthMembership">
+    <Key>
+      <PropertyRef Name="Provider" />
+      <PropertyRef Name="ProviderUserId" />
+    </Key>
+    <Property Name="Provider" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+    <Property Name="ProviderUserId" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="webpages_Roles">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="UserProfiles" Relationship="Model.webpages_UsersInRoles" FromRole="webpages_Roles" ToRole="UserProfile" />
+  </EntityType>
+  <Association Name="FK_InfoHardware_BrandHardware">
+    <End Role="BrandHardware" Type="Model.BrandHardware" Multiplicity="0..1" />
+    <End Role="InfoHardware" Type="Model.InfoHardware" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BrandHardware">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="InfoHardware">
+        <PropertyRef Name="BrandId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrdersFirm_InfoFirm">
+    <End Role="InfoFirm" Type="Model.InfoFirm" Multiplicity="1" />
+    <End Role="OrdersFirm" Type="Model.OrdersFirm" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InfoFirm">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrdersFirm">
+        <PropertyRef Name="firmId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InfoHardware_TypeHardware">
+    <End Role="TypeHardware" Type="Model.TypeHardware" Multiplicity="1" />
+    <End Role="InfoHardware" Type="Model.InfoHardware" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeHardware">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="InfoHardware">
+        <PropertyRef Name="typeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrdersFirm_InfoHardware">
+    <End Role="InfoHardware" Type="Model.InfoHardware" Multiplicity="1" />
+    <End Role="OrdersFirm" Type="Model.OrdersFirm" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InfoHardware">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrdersFirm">
+        <PropertyRef Name="hardwareId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrdersUser_InfoHardware">
+    <End Role="InfoHardware" Type="Model.InfoHardware" Multiplicity="1" />
+    <End Role="OrdersUser" Type="Model.OrdersUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InfoHardware">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrdersUser">
+        <PropertyRef Name="HardwareId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrdersFirm_OrdersExecute">
+    <End Role="OrdersExecute" Type="Model.OrdersExecute" Multiplicity="1" />
+    <End Role="OrdersFirm" Type="Model.OrdersFirm" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrdersExecute">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrdersFirm">
+        <PropertyRef Name="executeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrdersUser_OrdersExecute">
+    <End Role="OrdersExecute" Type="Model.OrdersExecute" Multiplicity="1" />
+    <End Role="OrdersUser" Type="Model.OrdersUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrdersExecute">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrdersUser">
+        <PropertyRef Name="ExecuteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrdersUser_UserProfile">
+    <End Role="UserProfile" Type="Model.UserProfile" Multiplicity="1" />
+    <End Role="OrdersUser" Type="Model.OrdersUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserProfile">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="OrdersUser">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="webpages_UsersInRoles">
+    <End Role="webpages_Roles" Type="Model.webpages_Roles" Multiplicity="*" />
+    <End Role="UserProfile" Type="Model.UserProfile" Multiplicity="*" />
+  </Association>
+</Schema>

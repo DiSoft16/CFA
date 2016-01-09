@@ -1,0 +1,35 @@
+﻿@model CFA.Models.RegisterModel
+@{
+    ViewBag.Title = "Register";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend></legend>
+        <div class="main-info2">
+            <h3>Register</h3>
+            <div class="in-form">
+
+                @Html.TextBoxFor(m => m.UserName, new { @type = "text", placeholder = "Enter Name", required = "" })
+                @Html.ValidationMessageFor(m => m.UserName)
+
+                @Html.PasswordFor(m => m.Password, new { @type = "password", placeholder = "Enter Password", required = "" })
+                @Html.ValidationMessageFor(m => m.Password)
+
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @type = "password", placeholder = "Confirm Password", required = "" })
+                @Html.ValidationMessageFor(m => m.ConfirmPassword)
+                <div class="check-sub">
+                    <input type="submit" value="Register" />
+                </div>
+            </div>
+        </div>
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

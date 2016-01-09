@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище Model" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="Хранилище ModelContainer">
+    <EntitySet Name="InfoFirm" EntityType="Хранилище Model.InfoFirm" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="InfoHardware" EntityType="Хранилище Model.InfoHardware" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OrdersExecute" EntityType="Хранилище Model.OrdersExecute" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OrdersFirm" EntityType="Хранилище Model.OrdersFirm" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OrdersUser" EntityType="Хранилище Model.OrdersUser" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TypeHardware" EntityType="Хранилище Model.TypeHardware" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserProfile" EntityType="Хранилище Model.UserProfile" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="webpages_Membership" EntityType="Хранилище Model.webpages_Membership" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="webpages_OAuthMembership" EntityType="Хранилище Model.webpages_OAuthMembership" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="webpages_Roles" EntityType="Хранилище Model.webpages_Roles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="webpages_UsersInRoles" EntityType="Хранилище Model.webpages_UsersInRoles" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_InfoHardware_TypeHardware" Association="Хранилище Model.FK_InfoHardware_TypeHardware">
+      <End Role="TypeHardware" EntitySet="TypeHardware" />
+      <End Role="InfoHardware" EntitySet="InfoHardware" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrdersFirm_InfoFirm" Association="Хранилище Model.FK_OrdersFirm_InfoFirm">
+      <End Role="InfoFirm" EntitySet="InfoFirm" />
+      <End Role="OrdersFirm" EntitySet="OrdersFirm" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrdersFirm_InfoHardware" Association="Хранилище Model.FK_OrdersFirm_InfoHardware">
+      <End Role="InfoHardware" EntitySet="InfoHardware" />
+      <End Role="OrdersFirm" EntitySet="OrdersFirm" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrdersFirm_OrdersExecute" Association="Хранилище Model.FK_OrdersFirm_OrdersExecute">
+      <End Role="OrdersExecute" EntitySet="OrdersExecute" />
+      <End Role="OrdersFirm" EntitySet="OrdersFirm" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrdersUser_InfoHardware" Association="Хранилище Model.FK_OrdersUser_InfoHardware">
+      <End Role="InfoHardware" EntitySet="InfoHardware" />
+      <End Role="OrdersUser" EntitySet="OrdersUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrdersUser_OrdersExecute" Association="Хранилище Model.FK_OrdersUser_OrdersExecute">
+      <End Role="OrdersExecute" EntitySet="OrdersExecute" />
+      <End Role="OrdersUser" EntitySet="OrdersUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrdersUser_UserProfile" Association="Хранилище Model.FK_OrdersUser_UserProfile">
+      <End Role="UserProfile" EntitySet="UserProfile" />
+      <End Role="OrdersUser" EntitySet="OrdersUser" />
+    </AssociationSet>
+    <AssociationSet Name="fk_RoleId" Association="Хранилище Model.fk_RoleId">
+      <End Role="webpages_Roles" EntitySet="webpages_Roles" />
+      <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
+    </AssociationSet>
+    <AssociationSet Name="fk_UserId" Association="Хранилище Model.fk_UserId">
+      <End Role="UserProfile" EntitySet="UserProfile" />
+      <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="InfoFirm">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="phone" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="email" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="InfoHardware">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="numbAvailable" Type="int" />
+    <Property Name="numbOrder" Type="int" />
+    <Property Name="cost" Type="int" />
+    <Property Name="typeId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrdersExecute">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="message" Type="nvarchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="OrdersFirm">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="date" Type="datetime" Nullable="false" />
+    <Property Name="numb" Type="int" Nullable="false" />
+    <Property Name="hardwareId" Type="int" Nullable="false" />
+    <Property Name="firmId" Type="int" Nullable="false" />
+    <Property Name="executeId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrdersUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="date" Type="datetime" Nullable="false" />
+    <Property Name="numb" Type="int" Nullable="false" />
+    <Property Name="HardwareId" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="ExecuteId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TypeHardware">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="UserProfile">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="nvarchar(max)" />
+    <Property Name="phone" Type="nvarchar" MaxLength="100" />
+    <Property Name="email" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="webpages_Membership">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="ConfirmationToken" Type="nvarchar" MaxLength="128" />
+    <Property Name="IsConfirmed" Type="bit" />
+    <Property Name="LastPasswordFailureDate" Type="datetime" />
+    <Property Name="PasswordFailuresSinceLastSuccess" Type="int" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="PasswordChangedDate" Type="datetime" />
+    <Property Name="PasswordSalt" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="PasswordVerificationToken" Type="nvarchar" MaxLength="128" />
+    <Property Name="PasswordVerificationTokenExpirationDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="webpages_OAuthMembership">
+    <Key>
+      <PropertyRef Name="Provider" />
+      <PropertyRef Name="ProviderUserId" />
+    </Key>
+    <Property Name="Provider" Type="nvarchar" Nullable="false" MaxLength="30" />
+    <Property Name="ProviderUserId" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="webpages_Roles">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="nvarchar" Nullable="false" MaxLength="256" />
+  </EntityType>
+  <EntityType Name="webpages_UsersInRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="RoleId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_InfoHardware_TypeHardware">
+    <End Role="TypeHardware" Type="Хранилище Model.TypeHardware" Multiplicity="1" />
+    <End Role="InfoHardware" Type="Хранилище Model.InfoHardware" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeHardware">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="InfoHardware">
+        <PropertyRef Name="typeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrdersFirm_InfoFirm">
+    <End Role="InfoFirm" Type="Хранилище Model.InfoFirm" Multiplicity="1" />
+    <End Role="OrdersFirm" Type="Хранилище Model.OrdersFirm" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InfoFirm">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrdersFirm">
+        <PropertyRef Name="firmId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrdersFirm_InfoHardware">
+    <End Role="InfoHardware" Type="Хранилище Model.InfoHardware" Multiplicity="1" />
+    <End Role="OrdersFirm" Type="Хранилище Model.OrdersFirm" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InfoHardware">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrdersFirm">
+        <PropertyRef Name="hardwareId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrdersFirm_OrdersExecute">
+    <End Role="OrdersExecute" Type="Хранилище Model.OrdersExecute" Multiplicity="1" />
+    <End Role="OrdersFirm" Type="Хранилище Model.OrdersFirm" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrdersExecute">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrdersFirm">
+        <PropertyRef Name="executeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrdersUser_InfoHardware">
+    <End Role="InfoHardware" Type="Хранилище Model.InfoHardware" Multiplicity="1" />
+    <End Role="OrdersUser" Type="Хранилище Model.OrdersUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InfoHardware">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrdersUser">
+        <PropertyRef Name="HardwareId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrdersUser_OrdersExecute">
+    <End Role="OrdersExecute" Type="Хранилище Model.OrdersExecute" Multiplicity="1" />
+    <End Role="OrdersUser" Type="Хранилище Model.OrdersUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrdersExecute">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrdersUser">
+        <PropertyRef Name="ExecuteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrdersUser_UserProfile">
+    <End Role="UserProfile" Type="Хранилище Model.UserProfile" Multiplicity="1" />
+    <End Role="OrdersUser" Type="Хранилище Model.OrdersUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserProfile">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="OrdersUser">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_RoleId">
+    <End Role="webpages_Roles" Type="Хранилище Model.webpages_Roles" Multiplicity="1" />
+    <End Role="webpages_UsersInRoles" Type="Хранилище Model.webpages_UsersInRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="webpages_Roles">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="webpages_UsersInRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_UserId">
+    <End Role="UserProfile" Type="Хранилище Model.UserProfile" Multiplicity="1" />
+    <End Role="webpages_UsersInRoles" Type="Хранилище Model.webpages_UsersInRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserProfile">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="webpages_UsersInRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

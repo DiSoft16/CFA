@@ -1,0 +1,37 @@
+﻿@model CFA.Models.UserProfileView
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h4>UserProfile</h4>
+    </div>
+
+    <div class="list-group">
+        <a class="list-group-item">
+            <h4 class="list-group-item-heading">@Html.DisplayNameFor(model => model.UserName)</h4>
+            <p class="list-group-item-text">@Html.DisplayFor(model => model.UserName)</p>
+        </a>
+
+        <a class="list-group-item">
+            <h4 class="list-group-item-heading">@Html.DisplayNameFor(model => model.phone)</h4>
+            <p class="list-group-item-text">@Html.DisplayFor(model => model.phone)</p>
+        </a>
+
+        <a class="list-group-item">
+            <h4 class="list-group-item-heading">@Html.DisplayNameFor(model => model.email)</h4>
+            <p class="list-group-item-text">@Html.DisplayFor(model => model.email)</p>
+        </a>
+    </div>
+
+    <div class="col-sm-1">
+        <a href="/UserProfile/Edit/@Model.UserId" class="btn btn-primary edit-button">Edit</a>
+    </div>
+    <div class="col-sm-1">
+        <a href="/UserProfile/Index" class="btn btn-primary edit-button">Back</a>
+    </div>
+</div>

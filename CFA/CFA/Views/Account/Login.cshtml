@@ -1,0 +1,46 @@
+﻿@model CFA.Models.LoginModel
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<section id="loginForm">
+    @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <fieldset>
+            <legend></legend>
+            <div class="main-info2">
+                <h3>Login</h3>
+                <div class="in-form">
+                    @Html.TextBoxFor(m => m.UserName, new { @type = "text", placeholder = "Enter Name", required = "" })
+                    @Html.ValidationMessageFor(m => m.UserName)
+
+                    @Html.PasswordFor(m => m.Password, new { @type = "password", placeholder = "Enter Password", required = "" })
+                    @Html.ValidationMessageFor(m => m.Password)
+                    <div class="ckeck-bg">
+                        <div class="checkbox-form">
+                            <div class="check">
+                                <label class="checkbox">
+                                    @Html.CheckBoxFor(m => m.RememberMe, new { @name = "checkbox", type = "checkbox" })
+
+                                    <i></i>Remember my Password</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="check-sub">
+                        <input type="submit" value="Login" />
+                    </div>
+                </div>
+                <p>
+                    @Html.ActionLink("Зарегистрируйтесь", "Register"), если у вас нет учетной записи.
+                </p>
+            </div>
+        </fieldset>
+    }
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

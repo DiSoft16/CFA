@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ComputerFirmModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="ComputerFirmEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="InfoFirm" EntityType="ComputerFirmModel.InfoFirm" />
+    <EntitySet Name="InfoHardware" EntityType="ComputerFirmModel.InfoHardware" />
+    <EntitySet Name="InfoUser" EntityType="ComputerFirmModel.InfoUser" />
+    <EntitySet Name="OrdersFirm" EntityType="ComputerFirmModel.OrdersFirm" />
+    <EntitySet Name="OrdersUser" EntityType="ComputerFirmModel.OrdersUser" />
+    <EntitySet Name="TypeHardware" EntityType="ComputerFirmModel.TypeHardware" />
+    <AssociationSet Name="FK_OrdersFirm_InfoFirm" Association="ComputerFirmModel.FK_OrdersFirm_InfoFirm">
+      <End Role="InfoFirm" EntitySet="InfoFirm" />
+      <End Role="OrdersFirm" EntitySet="OrdersFirm" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InfoHardware_TypeHardware" Association="ComputerFirmModel.FK_InfoHardware_TypeHardware">
+      <End Role="TypeHardware" EntitySet="TypeHardware" />
+      <End Role="InfoHardware" EntitySet="InfoHardware" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrdersFirm_InfoHardware" Association="ComputerFirmModel.FK_OrdersFirm_InfoHardware">
+      <End Role="InfoHardware" EntitySet="InfoHardware" />
+      <End Role="OrdersFirm" EntitySet="OrdersFirm" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrdersUser_InfoHardware" Association="ComputerFirmModel.FK_OrdersUser_InfoHardware">
+      <End Role="InfoHardware" EntitySet="InfoHardware" />
+      <End Role="OrdersUser" EntitySet="OrdersUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrdersUser_InfoUser" Association="ComputerFirmModel.FK_OrdersUser_InfoUser">
+      <End Role="InfoUser" EntitySet="InfoUser" />
+      <End Role="OrdersUser" EntitySet="OrdersUser" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="InfoFirm">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="phone" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="true" />
+    <Property Name="email" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="true" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="true" />
+    <NavigationProperty Name="OrdersFirm" Relationship="ComputerFirmModel.FK_OrdersFirm_InfoFirm" FromRole="InfoFirm" ToRole="OrdersFirm" />
+  </EntityType>
+  <EntityType Name="InfoHardware">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="true" />
+    <Property Name="numbAvailable" Type="Int32" />
+    <Property Name="numbOrder" Type="Int32" />
+    <Property Name="cost" Type="Int32" />
+    <Property Name="typeId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="TypeHardware" Relationship="ComputerFirmModel.FK_InfoHardware_TypeHardware" FromRole="InfoHardware" ToRole="TypeHardware" />
+    <NavigationProperty Name="OrdersFirm" Relationship="ComputerFirmModel.FK_OrdersFirm_InfoHardware" FromRole="InfoHardware" ToRole="OrdersFirm" />
+    <NavigationProperty Name="OrdersUser" Relationship="ComputerFirmModel.FK_OrdersUser_InfoHardware" FromRole="InfoHardware" ToRole="OrdersUser" />
+  </EntityType>
+  <EntityType Name="InfoUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="username" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="true" />
+    <Property Name="phone" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="true" />
+    <Property Name="email" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="true" />
+    <NavigationProperty Name="OrdersUser" Relationship="ComputerFirmModel.FK_OrdersUser_InfoUser" FromRole="InfoUser" ToRole="OrdersUser" />
+  </EntityType>
+  <EntityType Name="OrdersFirm">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="numb" Type="Int32" Nullable="false" />
+    <Property Name="hardwareId" Type="Int32" Nullable="false" />
+    <Property Name="firmId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="InfoFirm" Relationship="ComputerFirmModel.FK_OrdersFirm_InfoFirm" FromRole="OrdersFirm" ToRole="InfoFirm" />
+    <NavigationProperty Name="InfoHardware" Relationship="ComputerFirmModel.FK_OrdersFirm_InfoHardware" FromRole="OrdersFirm" ToRole="InfoHardware" />
+  </EntityType>
+  <EntityType Name="OrdersUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="numb" Type="Int32" Nullable="false" />
+    <Property Name="HardwareId" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="InfoHardware" Relationship="ComputerFirmModel.FK_OrdersUser_InfoHardware" FromRole="OrdersUser" ToRole="InfoHardware" />
+    <NavigationProperty Name="InfoUser" Relationship="ComputerFirmModel.FK_OrdersUser_InfoUser" FromRole="OrdersUser" ToRole="InfoUser" />
+  </EntityType>
+  <EntityType Name="TypeHardware">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="true" />
+    <NavigationProperty Name="InfoHardware" Relationship="ComputerFirmModel.FK_InfoHardware_TypeHardware" FromRole="TypeHardware" ToRole="InfoHardware" />
+  </EntityType>
+  <Association Name="FK_OrdersFirm_InfoFirm">
+    <End Role="InfoFirm" Type="ComputerFirmModel.InfoFirm" Multiplicity="1" />
+    <End Role="OrdersFirm" Type="ComputerFirmModel.OrdersFirm" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InfoFirm">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrdersFirm">
+        <PropertyRef Name="firmId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InfoHardware_TypeHardware">
+    <End Role="TypeHardware" Type="ComputerFirmModel.TypeHardware" Multiplicity="1" />
+    <End Role="InfoHardware" Type="ComputerFirmModel.InfoHardware" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeHardware">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="InfoHardware">
+        <PropertyRef Name="typeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrdersFirm_InfoHardware">
+    <End Role="InfoHardware" Type="ComputerFirmModel.InfoHardware" Multiplicity="1" />
+    <End Role="OrdersFirm" Type="ComputerFirmModel.OrdersFirm" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InfoHardware">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrdersFirm">
+        <PropertyRef Name="hardwareId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrdersUser_InfoHardware">
+    <End Role="InfoHardware" Type="ComputerFirmModel.InfoHardware" Multiplicity="1" />
+    <End Role="OrdersUser" Type="ComputerFirmModel.OrdersUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InfoHardware">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrdersUser">
+        <PropertyRef Name="HardwareId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrdersUser_InfoUser">
+    <End Role="InfoUser" Type="ComputerFirmModel.InfoUser" Multiplicity="1" />
+    <End Role="OrdersUser" Type="ComputerFirmModel.OrdersUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InfoUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrdersUser">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

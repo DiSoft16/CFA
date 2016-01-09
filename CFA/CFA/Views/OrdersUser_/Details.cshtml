@@ -1,0 +1,43 @@
+﻿@model CFA.Models.OrdersUser
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>OrdersUser</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.date)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.date)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.numb)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.numb)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.InfoHardware.name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.InfoHardware.name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.InfoUser.username)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.InfoUser.username)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

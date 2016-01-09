@@ -1,0 +1,12 @@
+﻿@model IEnumerable<CFA.Models.LoginViewModel>
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayoutCFA.cshtml";
+}
+@using (Html.BeginForm())
+{
+  @Html.ValidationSummary(true)
+  @Html.EditorForModel()
+  <p><input type="submit" value="Log in" /></p>
+}

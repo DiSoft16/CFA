@@ -1,0 +1,114 @@
+﻿@model IEnumerable<CFA.Models.InfoHardware>
+
+@{
+    ViewBag.Title = "Index";
+    WebGrid grid = new WebGrid(Model); // grid with sorting and paging
+}
+
+<h2>Index</h2>
+
+<p>
+    <a class="btn btn-success" href="/Admin/InfoHardware/Create">Create New</a>
+</p>
+
+<div class="panel panel-primary filterable">
+    <div class="panel-heading panel-heading-custom">
+        <h3 class="panel-title">Filters</h3>
+        <div class="pull-right">
+            <span class="glyphicon glyphicon-filter"></span>
+
+        </div>
+    </div>
+    <div class="container">
+        <div class="row filters">
+            <form method="get">
+                <div class="col-md-2">
+                    <select class="form-control" name="category" onchange="$('form').submit()">
+                        <option value="0">Select Category</option>
+                        @foreach (var item in ViewBag.CategoryList)
+                        {
+                            if (Convert.ToInt32(@Request.Params["category"]) == @item.Id)
+                            { <option value="@item.Id" selected >@item.name</option>}
+                            else
+                            {<option value="@item.Id">@item.name</option>}
+                        }
+                    </select>
+                </div>
+
+                 <div class="col-md-2">
+                    <select class="form-control" name="brand" onchange="$('form').submit()">
+                        <option value="0">Select Brand</option>
+                        @foreach (var item in ViewBag.BrandList)
+                        {
+                            if (Convert.ToInt32(@Request.Params["brand"]) == @item.Id)
+                            { <option value="@item.Id" selected >@item.name</option>}
+                            else
+                            {<option value="@item.Id">@item.name</option>}
+                        }
+                    </select>
+                </div>
+
+                <div class="col-md-2">
+                    @Html.TextBox("name", null, new
+                   {
+                       @class = "form-control",
+                       placeholder = "Name Hardware",
+                       type = "text",
+                       autocomplete = "off",
+                       onChange = "$('form').submit()"
+                   })
+                </div>
+                <div class="col-md-2">
+                    @Html.TextBox("available", null, new
+                   {
+                       @class = "form-control",
+                       placeholder = "Numb Available",
+                       type = "text",
+                       autocomplete = "off",
+                       onChange = "$('form').submit()"
+                   })
+                </div>
+                <div class="col-md-2">
+                    @Html.TextBox("order", null, new
+                   {
+                       @class = "form-control",
+                       placeholder = "Numb Order",
+                       type = "text",
+                       autocomplete = "off",
+                       onChange = "$('form').submit()"
+                   })
+                </div>
+                <div class="col-md-2">
+                    @Html.TextBox("cost", null, new
+                   {
+                       @class = "form-control",
+                       placeholder = "Numb Cost",
+                       type = "text",
+                       autocomplete = "off",
+                       onChange = "$('form').submit()"
+                   })
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="table-responsive table-striped">
+
+    @grid.GetHtml(tableStyle: "table",
+        columns: grid.Columns(
+        grid.Column("Id", "#"),        
+        grid.Column("TypeHardware.name", "Category"),
+        grid.Column("BrandHardware.name", "Brand"),
+        grid.Column("name", "Hardware Name"),
+        grid.Column("numbAvailable", "Numb Available"),
+        grid.Column("numbOrder", "Numb Order"),
+        grid.Column("cost", "Cost"),
+        grid.Column("Picture","fname",
+        format: @<text><img class="small_img" src="@Url.Content("~/Uploads/ImageHardware/"+@item.fname)" width="200" alt="@item.fname"/> </text>),
+        grid.Column(header: "Action", format: @<text>
+    <a class="btn btn-primary" href="/Admin/InfoHardware/Edit/@item.Id">Edit</a>
+    <a class="btn btn-primary" href="/Admin/InfoHardware/Details/@item.Id">Details</a>
+    <a class="btn btn-danger" href="/Admin/InfoHardware/Delete/@item.Id">Delete</a>
+    </text>)), selectedRowStyle: "selectedRow")
+</div>

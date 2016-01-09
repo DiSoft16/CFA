@@ -1,0 +1,60 @@
+﻿@model CFA.Models.OrdersFirm
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>OrdersFirm</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.date)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.date)
+            @Html.ValidationMessageFor(model => model.date)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.numb)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.numb)
+            @Html.ValidationMessageFor(model => model.numb)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.hardwareId, "InfoHardware")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("hardwareId", String.Empty)
+            @Html.ValidationMessageFor(model => model.hardwareId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.firmId, "InfoFirm")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("firmId", String.Empty)
+            @Html.ValidationMessageFor(model => model.firmId)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,29 @@
+﻿@model IEnumerable<CFA.Models.InfoHardware>
+@if (Model.Count() > 0)
+{
+    <div class="panel panel-primary">
+        <div class="panel-heading">Result Search on @Model.ElementAt(0).TypeHardware.name: @Model.Count() item</div>
+        <div class="panel-body">
+            <ul class="nav nav-pills nav-stacked">
+                @foreach (var hardware in Model)
+                {
+                    <li>
+                        <a>
+                            <img src="~/Uploads/ImageHardware/@hardware.fname" width="300"
+                                 alt="@hardware.fname" />
+                            <span>@hardware.name</span>
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
+
+
+    </div>
+}
+else
+{
+    <div class="alert alert-danger">
+        <strong>Empty category</strong> - not found items.
+    </div>
+}

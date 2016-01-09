@@ -1,0 +1,121 @@
+﻿@model CFA.Models.InfoHardware
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm("Edit", "InfoHardware", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+     
+    <fieldset>
+        <legend>InfoHardware</legend>
+
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            <div class="col-sm-8">
+                @Html.LabelFor(model => model.typeId, "TypeHardware")
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-8">
+                @Html.DropDownListFor(model => model.typeId, new SelectList(ViewBag.TypeList, "Id", "name"),
+              "Select type", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.typeId)
+            </div>
+        </div>
+                
+        <div class="form-group">
+            <div class="col-sm-8">
+                @Html.LabelFor(model => model.BrandId, "BrandHardware")
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-8">
+                @Html.DropDownListFor(model => model.BrandId, new SelectList(ViewBag.BrandList, "Id", "name"),
+              "Select type", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.BrandId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-8">
+                @Html.LabelFor(model => model.name)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-8">
+                @Html.TextBoxFor(model => model.name, new { @class = "form-control", type = "text" })
+                @Html.ValidationMessageFor(model => model.name)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-8">
+                @Html.LabelFor(model => model.numbAvailable)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-8">
+                @Html.TextBoxFor(model => model.numbAvailable, new { @class = "form-control", type = "text" })
+                @Html.ValidationMessageFor(model => model.numbAvailable)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-8">
+                @Html.LabelFor(model => model.numbOrder)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-8">
+                @Html.TextBoxFor(model => model.numbOrder, new { @class = "form-control", type = "text" })
+                @Html.ValidationMessageFor(model => model.numbOrder)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-8">
+                @Html.LabelFor(model => model.cost)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-8">
+                @Html.TextBoxFor(model => model.cost, new { @class = "form-control", type = "text" })
+                @Html.ValidationMessageFor(model => model.cost)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-8">
+                @Html.LabelFor(model => model.fname)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-8">
+                <input id="file_upload" type="file" name="upload" /><br />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-8">
+                <button type="submit" class="btn btn-primary edit-button">Save</button>
+            </div>
+        </div>
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

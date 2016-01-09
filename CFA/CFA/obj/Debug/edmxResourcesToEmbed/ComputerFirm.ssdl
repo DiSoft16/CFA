@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище ComputerFirmModel" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="Хранилище ComputerFirmModelContainer">
+    <EntitySet Name="InfoFirm" EntityType="Хранилище ComputerFirmModel.InfoFirm" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="InfoHardware" EntityType="Хранилище ComputerFirmModel.InfoHardware" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="InfoUser" EntityType="Хранилище ComputerFirmModel.InfoUser" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OrdersFirm" EntityType="Хранилище ComputerFirmModel.OrdersFirm" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OrdersUser" EntityType="Хранилище ComputerFirmModel.OrdersUser" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TypeHardware" EntityType="Хранилище ComputerFirmModel.TypeHardware" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_InfoHardware_TypeHardware" Association="Хранилище ComputerFirmModel.FK_InfoHardware_TypeHardware">
+      <End Role="TypeHardware" EntitySet="TypeHardware" />
+      <End Role="InfoHardware" EntitySet="InfoHardware" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrdersFirm_InfoFirm" Association="Хранилище ComputerFirmModel.FK_OrdersFirm_InfoFirm">
+      <End Role="InfoFirm" EntitySet="InfoFirm" />
+      <End Role="OrdersFirm" EntitySet="OrdersFirm" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrdersFirm_InfoHardware" Association="Хранилище ComputerFirmModel.FK_OrdersFirm_InfoHardware">
+      <End Role="InfoHardware" EntitySet="InfoHardware" />
+      <End Role="OrdersFirm" EntitySet="OrdersFirm" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrdersUser_InfoHardware" Association="Хранилище ComputerFirmModel.FK_OrdersUser_InfoHardware">
+      <End Role="InfoHardware" EntitySet="InfoHardware" />
+      <End Role="OrdersUser" EntitySet="OrdersUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrdersUser_InfoUser" Association="Хранилище ComputerFirmModel.FK_OrdersUser_InfoUser">
+      <End Role="InfoUser" EntitySet="InfoUser" />
+      <End Role="OrdersUser" EntitySet="OrdersUser" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="InfoFirm">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="phone" Type="nchar" Nullable="false" MaxLength="100" />
+    <Property Name="email" Type="nchar" Nullable="false" MaxLength="100" />
+    <Property Name="name" Type="nchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="InfoHardware">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="name" Type="nchar" Nullable="false" MaxLength="100" />
+    <Property Name="numbAvailable" Type="int" />
+    <Property Name="numbOrder" Type="int" />
+    <Property Name="cost" Type="int" />
+    <Property Name="typeId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="InfoUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="username" Type="nchar" Nullable="false" MaxLength="100" />
+    <Property Name="phone" Type="nchar" Nullable="false" MaxLength="100" />
+    <Property Name="email" Type="nchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="OrdersFirm">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="date" Type="datetime" Nullable="false" />
+    <Property Name="numb" Type="int" Nullable="false" />
+    <Property Name="hardwareId" Type="int" Nullable="false" />
+    <Property Name="firmId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrdersUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="date" Type="datetime" Nullable="false" />
+    <Property Name="numb" Type="int" Nullable="false" />
+    <Property Name="HardwareId" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TypeHardware">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="name" Type="nchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <Association Name="FK_InfoHardware_TypeHardware">
+    <End Role="TypeHardware" Type="Хранилище ComputerFirmModel.TypeHardware" Multiplicity="1" />
+    <End Role="InfoHardware" Type="Хранилище ComputerFirmModel.InfoHardware" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeHardware">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="InfoHardware">
+        <PropertyRef Name="typeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrdersFirm_InfoFirm">
+    <End Role="InfoFirm" Type="Хранилище ComputerFirmModel.InfoFirm" Multiplicity="1" />
+    <End Role="OrdersFirm" Type="Хранилище ComputerFirmModel.OrdersFirm" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InfoFirm">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrdersFirm">
+        <PropertyRef Name="firmId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrdersFirm_InfoHardware">
+    <End Role="InfoHardware" Type="Хранилище ComputerFirmModel.InfoHardware" Multiplicity="1" />
+    <End Role="OrdersFirm" Type="Хранилище ComputerFirmModel.OrdersFirm" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InfoHardware">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrdersFirm">
+        <PropertyRef Name="hardwareId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrdersUser_InfoHardware">
+    <End Role="InfoHardware" Type="Хранилище ComputerFirmModel.InfoHardware" Multiplicity="1" />
+    <End Role="OrdersUser" Type="Хранилище ComputerFirmModel.OrdersUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InfoHardware">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrdersUser">
+        <PropertyRef Name="HardwareId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrdersUser_InfoUser">
+    <End Role="InfoUser" Type="Хранилище ComputerFirmModel.InfoUser" Multiplicity="1" />
+    <End Role="OrdersUser" Type="Хранилище ComputerFirmModel.OrdersUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InfoUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrdersUser">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

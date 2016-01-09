@@ -1,0 +1,762 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище Model" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="Хранилище ModelContainer">
+          <EntitySet Name="BrandHardware" EntityType="Хранилище Model.BrandHardware" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="InfoFirm" EntityType="Хранилище Model.InfoFirm" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="InfoHardware" EntityType="Хранилище Model.InfoHardware" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OrdersExecute" EntityType="Хранилище Model.OrdersExecute" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OrdersFirm" EntityType="Хранилище Model.OrdersFirm" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OrdersUser" EntityType="Хранилище Model.OrdersUser" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Table" EntityType="Хранилище Model.Table" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TypeHardware" EntityType="Хранилище Model.TypeHardware" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserProfile" EntityType="Хранилище Model.UserProfile" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="webpages_Membership" EntityType="Хранилище Model.webpages_Membership" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="webpages_OAuthMembership" EntityType="Хранилище Model.webpages_OAuthMembership" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="webpages_Roles" EntityType="Хранилище Model.webpages_Roles" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="webpages_UsersInRoles" EntityType="Хранилище Model.webpages_UsersInRoles" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_InfoHardware_BrandHardware" Association="Хранилище Model.FK_InfoHardware_BrandHardware">
+            <End Role="BrandHardware" EntitySet="BrandHardware" />
+            <End Role="InfoHardware" EntitySet="InfoHardware" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InfoHardware_TypeHardware" Association="Хранилище Model.FK_InfoHardware_TypeHardware">
+            <End Role="TypeHardware" EntitySet="TypeHardware" />
+            <End Role="InfoHardware" EntitySet="InfoHardware" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrdersFirm_InfoFirm" Association="Хранилище Model.FK_OrdersFirm_InfoFirm">
+            <End Role="InfoFirm" EntitySet="InfoFirm" />
+            <End Role="OrdersFirm" EntitySet="OrdersFirm" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrdersFirm_InfoHardware" Association="Хранилище Model.FK_OrdersFirm_InfoHardware">
+            <End Role="InfoHardware" EntitySet="InfoHardware" />
+            <End Role="OrdersFirm" EntitySet="OrdersFirm" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrdersFirm_OrdersExecute" Association="Хранилище Model.FK_OrdersFirm_OrdersExecute">
+            <End Role="OrdersExecute" EntitySet="OrdersExecute" />
+            <End Role="OrdersFirm" EntitySet="OrdersFirm" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrdersUser_InfoHardware" Association="Хранилище Model.FK_OrdersUser_InfoHardware">
+            <End Role="InfoHardware" EntitySet="InfoHardware" />
+            <End Role="OrdersUser" EntitySet="OrdersUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrdersUser_OrdersExecute" Association="Хранилище Model.FK_OrdersUser_OrdersExecute">
+            <End Role="OrdersExecute" EntitySet="OrdersExecute" />
+            <End Role="OrdersUser" EntitySet="OrdersUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrdersUser_UserProfile" Association="Хранилище Model.FK_OrdersUser_UserProfile">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="OrdersUser" EntitySet="OrdersUser" />
+          </AssociationSet>
+          <AssociationSet Name="fk_RoleId" Association="Хранилище Model.fk_RoleId">
+            <End Role="webpages_Roles" EntitySet="webpages_Roles" />
+            <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
+          </AssociationSet>
+          <AssociationSet Name="fk_UserId" Association="Хранилище Model.fk_UserId">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="BrandHardware">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="InfoFirm">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="phone" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="email" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="address" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="InfoHardware">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="numbAvailable" Type="int" />
+          <Property Name="numbOrder" Type="int" />
+          <Property Name="cost" Type="int" />
+          <Property Name="fname" Type="nvarchar" MaxLength="255" />
+          <Property Name="typeId" Type="int" Nullable="false" />
+          <Property Name="BrandId" Type="int" />
+          <Property Name="describe" Type="nvarchar" MaxLength="1024" />
+        </EntityType>
+        <EntityType Name="OrdersExecute">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="message" Type="nvarchar" Nullable="false" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="OrdersFirm">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="dateStart" Type="datetime" />
+          <Property Name="numb" Type="int" Nullable="false" />
+          <Property Name="hardwareId" Type="int" Nullable="false" />
+          <Property Name="firmId" Type="int" Nullable="false" />
+          <Property Name="executeId" Type="int" Nullable="false" />
+          <Property Name="dateExecution" Type="datetime" />
+        </EntityType>
+        <EntityType Name="OrdersUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="dateStart" Type="datetime" />
+          <Property Name="numb" Type="int" Nullable="false" />
+          <Property Name="HardwareId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="ExecuteId" Type="int" Nullable="false" />
+          <Property Name="dateExecution" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Table">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TypeHardware">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="UserProfile">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="nvarchar(max)" />
+          <Property Name="phone" Type="nvarchar" MaxLength="100" />
+          <Property Name="email" Type="nvarchar" MaxLength="100" />
+          <Property Name="address" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="webpages_Membership">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="ConfirmationToken" Type="nvarchar" MaxLength="128" />
+          <Property Name="IsConfirmed" Type="bit" />
+          <Property Name="LastPasswordFailureDate" Type="datetime" />
+          <Property Name="PasswordFailuresSinceLastSuccess" Type="int" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="PasswordChangedDate" Type="datetime" />
+          <Property Name="PasswordSalt" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="PasswordVerificationToken" Type="nvarchar" MaxLength="128" />
+          <Property Name="PasswordVerificationTokenExpirationDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="webpages_OAuthMembership">
+          <Key>
+            <PropertyRef Name="Provider" />
+            <PropertyRef Name="ProviderUserId" />
+          </Key>
+          <Property Name="Provider" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="ProviderUserId" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="webpages_Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="nvarchar" Nullable="false" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="webpages_UsersInRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_InfoHardware_BrandHardware">
+          <End Role="BrandHardware" Type="Хранилище Model.BrandHardware" Multiplicity="0..1" />
+          <End Role="InfoHardware" Type="Хранилище Model.InfoHardware" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BrandHardware">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="InfoHardware">
+              <PropertyRef Name="BrandId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InfoHardware_TypeHardware">
+          <End Role="TypeHardware" Type="Хранилище Model.TypeHardware" Multiplicity="1" />
+          <End Role="InfoHardware" Type="Хранилище Model.InfoHardware" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeHardware">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="InfoHardware">
+              <PropertyRef Name="typeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrdersFirm_InfoFirm">
+          <End Role="InfoFirm" Type="Хранилище Model.InfoFirm" Multiplicity="1" />
+          <End Role="OrdersFirm" Type="Хранилище Model.OrdersFirm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InfoFirm">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrdersFirm">
+              <PropertyRef Name="firmId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrdersFirm_InfoHardware">
+          <End Role="InfoHardware" Type="Хранилище Model.InfoHardware" Multiplicity="1" />
+          <End Role="OrdersFirm" Type="Хранилище Model.OrdersFirm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InfoHardware">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrdersFirm">
+              <PropertyRef Name="hardwareId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrdersFirm_OrdersExecute">
+          <End Role="OrdersExecute" Type="Хранилище Model.OrdersExecute" Multiplicity="1" />
+          <End Role="OrdersFirm" Type="Хранилище Model.OrdersFirm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrdersExecute">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrdersFirm">
+              <PropertyRef Name="executeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrdersUser_InfoHardware">
+          <End Role="InfoHardware" Type="Хранилище Model.InfoHardware" Multiplicity="1" />
+          <End Role="OrdersUser" Type="Хранилище Model.OrdersUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InfoHardware">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrdersUser">
+              <PropertyRef Name="HardwareId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrdersUser_OrdersExecute">
+          <End Role="OrdersExecute" Type="Хранилище Model.OrdersExecute" Multiplicity="1" />
+          <End Role="OrdersUser" Type="Хранилище Model.OrdersUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrdersExecute">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrdersUser">
+              <PropertyRef Name="ExecuteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrdersUser_UserProfile">
+          <End Role="UserProfile" Type="Хранилище Model.UserProfile" Multiplicity="1" />
+          <End Role="OrdersUser" Type="Хранилище Model.OrdersUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="OrdersUser">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_RoleId">
+          <End Role="webpages_Roles" Type="Хранилище Model.webpages_Roles" Multiplicity="1" />
+          <End Role="webpages_UsersInRoles" Type="Хранилище Model.webpages_UsersInRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="webpages_Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="webpages_UsersInRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_UserId">
+          <End Role="UserProfile" Type="Хранилище Model.UserProfile" Multiplicity="1" />
+          <End Role="webpages_UsersInRoles" Type="Хранилище Model.webpages_UsersInRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="webpages_UsersInRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ComputerFirmEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="BrandHardwares" EntityType="Model.BrandHardware" />
+          <EntitySet Name="InfoFirms" EntityType="Model.InfoFirm" />
+          <EntitySet Name="InfoHardwares" EntityType="Model.InfoHardware" />
+          <EntitySet Name="OrdersExecutes" EntityType="Model.OrdersExecute" />
+          <EntitySet Name="OrdersFirms" EntityType="Model.OrdersFirm" />
+          <EntitySet Name="OrdersUsers" EntityType="Model.OrdersUser" />
+          <EntitySet Name="Tables" EntityType="Model.Table" />
+          <EntitySet Name="TypeHardwares" EntityType="Model.TypeHardware" />
+          <EntitySet Name="UserProfiles" EntityType="Model.UserProfile" />
+          <EntitySet Name="webpages_Membership" EntityType="Model.webpages_Membership" />
+          <EntitySet Name="webpages_OAuthMembership" EntityType="Model.webpages_OAuthMembership" />
+          <EntitySet Name="webpages_Roles" EntityType="Model.webpages_Roles" />
+          <AssociationSet Name="FK_InfoHardware_BrandHardware" Association="Model.FK_InfoHardware_BrandHardware">
+            <End Role="BrandHardware" EntitySet="BrandHardwares" />
+            <End Role="InfoHardware" EntitySet="InfoHardwares" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrdersFirm_InfoFirm" Association="Model.FK_OrdersFirm_InfoFirm">
+            <End Role="InfoFirm" EntitySet="InfoFirms" />
+            <End Role="OrdersFirm" EntitySet="OrdersFirms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InfoHardware_TypeHardware" Association="Model.FK_InfoHardware_TypeHardware">
+            <End Role="TypeHardware" EntitySet="TypeHardwares" />
+            <End Role="InfoHardware" EntitySet="InfoHardwares" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrdersFirm_InfoHardware" Association="Model.FK_OrdersFirm_InfoHardware">
+            <End Role="InfoHardware" EntitySet="InfoHardwares" />
+            <End Role="OrdersFirm" EntitySet="OrdersFirms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrdersUser_InfoHardware" Association="Model.FK_OrdersUser_InfoHardware">
+            <End Role="InfoHardware" EntitySet="InfoHardwares" />
+            <End Role="OrdersUser" EntitySet="OrdersUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrdersFirm_OrdersExecute" Association="Model.FK_OrdersFirm_OrdersExecute">
+            <End Role="OrdersExecute" EntitySet="OrdersExecutes" />
+            <End Role="OrdersFirm" EntitySet="OrdersFirms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrdersUser_OrdersExecute" Association="Model.FK_OrdersUser_OrdersExecute">
+            <End Role="OrdersExecute" EntitySet="OrdersExecutes" />
+            <End Role="OrdersUser" EntitySet="OrdersUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrdersUser_UserProfile" Association="Model.FK_OrdersUser_UserProfile">
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+            <End Role="OrdersUser" EntitySet="OrdersUsers" />
+          </AssociationSet>
+          <AssociationSet Name="webpages_UsersInRoles" Association="Model.webpages_UsersInRoles">
+            <End Role="webpages_Roles" EntitySet="webpages_Roles" />
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="BrandHardware">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="InfoHardwares" Relationship="Model.FK_InfoHardware_BrandHardware" FromRole="BrandHardware" ToRole="InfoHardware" />
+        </EntityType>
+        <EntityType Name="InfoFirm">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="phone" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="address" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="OrdersFirms" Relationship="Model.FK_OrdersFirm_InfoFirm" FromRole="InfoFirm" ToRole="OrdersFirm" />
+        </EntityType>
+        <EntityType Name="InfoHardware">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="numbAvailable" Type="Int32" />
+          <Property Name="numbOrder" Type="Int32" />
+          <Property Name="cost" Type="Int32" />
+          <Property Name="fname" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="typeId" Type="Int32" Nullable="false" />
+          <Property Name="BrandId" Type="Int32" />
+          <Property Name="describe" Type="String" MaxLength="1024" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="BrandHardware" Relationship="Model.FK_InfoHardware_BrandHardware" FromRole="InfoHardware" ToRole="BrandHardware" />
+          <NavigationProperty Name="TypeHardware" Relationship="Model.FK_InfoHardware_TypeHardware" FromRole="InfoHardware" ToRole="TypeHardware" />
+          <NavigationProperty Name="OrdersFirms" Relationship="Model.FK_OrdersFirm_InfoHardware" FromRole="InfoHardware" ToRole="OrdersFirm" />
+          <NavigationProperty Name="OrdersUsers" Relationship="Model.FK_OrdersUser_InfoHardware" FromRole="InfoHardware" ToRole="OrdersUser" />
+        </EntityType>
+        <EntityType Name="OrdersExecute">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="message" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="OrdersFirms" Relationship="Model.FK_OrdersFirm_OrdersExecute" FromRole="OrdersExecute" ToRole="OrdersFirm" />
+          <NavigationProperty Name="OrdersUsers" Relationship="Model.FK_OrdersUser_OrdersExecute" FromRole="OrdersExecute" ToRole="OrdersUser" />
+        </EntityType>
+        <EntityType Name="OrdersFirm">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="dateStart" Type="DateTime" Precision="3" />
+          <Property Name="numb" Type="Int32" Nullable="false" />
+          <Property Name="hardwareId" Type="Int32" Nullable="false" />
+          <Property Name="firmId" Type="Int32" Nullable="false" />
+          <Property Name="executeId" Type="Int32" Nullable="false" />
+          <Property Name="dateExecution" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="InfoFirm" Relationship="Model.FK_OrdersFirm_InfoFirm" FromRole="OrdersFirm" ToRole="InfoFirm" />
+          <NavigationProperty Name="InfoHardware" Relationship="Model.FK_OrdersFirm_InfoHardware" FromRole="OrdersFirm" ToRole="InfoHardware" />
+          <NavigationProperty Name="OrdersExecute" Relationship="Model.FK_OrdersFirm_OrdersExecute" FromRole="OrdersFirm" ToRole="OrdersExecute" />
+        </EntityType>
+        <EntityType Name="OrdersUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="dateStart" Type="DateTime" Precision="3" />
+          <Property Name="numb" Type="Int32" Nullable="false" />
+          <Property Name="HardwareId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="ExecuteId" Type="Int32" Nullable="false" />
+          <Property Name="dateExecution" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="InfoHardware" Relationship="Model.FK_OrdersUser_InfoHardware" FromRole="OrdersUser" ToRole="InfoHardware" />
+          <NavigationProperty Name="OrdersExecute" Relationship="Model.FK_OrdersUser_OrdersExecute" FromRole="OrdersUser" ToRole="OrdersExecute" />
+          <NavigationProperty Name="UserProfile" Relationship="Model.FK_OrdersUser_UserProfile" FromRole="OrdersUser" ToRole="UserProfile" />
+        </EntityType>
+        <EntityType Name="Table">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TypeHardware">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="InfoHardwares" Relationship="Model.FK_InfoHardware_TypeHardware" FromRole="TypeHardware" ToRole="InfoHardware" />
+        </EntityType>
+        <EntityType Name="UserProfile">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="phone" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="email" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="address" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="OrdersUsers" Relationship="Model.FK_OrdersUser_UserProfile" FromRole="UserProfile" ToRole="OrdersUser" />
+          <NavigationProperty Name="webpages_Roles" Relationship="Model.webpages_UsersInRoles" FromRole="UserProfile" ToRole="webpages_Roles" />
+        </EntityType>
+        <EntityType Name="webpages_Membership">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="ConfirmationToken" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="IsConfirmed" Type="Boolean" />
+          <Property Name="LastPasswordFailureDate" Type="DateTime" Precision="3" />
+          <Property Name="PasswordFailuresSinceLastSuccess" Type="Int32" Nullable="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="PasswordChangedDate" Type="DateTime" Precision="3" />
+          <Property Name="PasswordSalt" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="PasswordVerificationToken" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="PasswordVerificationTokenExpirationDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="webpages_OAuthMembership">
+          <Key>
+            <PropertyRef Name="Provider" />
+            <PropertyRef Name="ProviderUserId" />
+          </Key>
+          <Property Name="Provider" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="ProviderUserId" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="webpages_Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="UserProfiles" Relationship="Model.webpages_UsersInRoles" FromRole="webpages_Roles" ToRole="UserProfile" />
+        </EntityType>
+        <Association Name="FK_InfoHardware_BrandHardware">
+          <End Role="BrandHardware" Type="Model.BrandHardware" Multiplicity="0..1" />
+          <End Role="InfoHardware" Type="Model.InfoHardware" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BrandHardware">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="InfoHardware">
+              <PropertyRef Name="BrandId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrdersFirm_InfoFirm">
+          <End Role="InfoFirm" Type="Model.InfoFirm" Multiplicity="1" />
+          <End Role="OrdersFirm" Type="Model.OrdersFirm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InfoFirm">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrdersFirm">
+              <PropertyRef Name="firmId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InfoHardware_TypeHardware">
+          <End Role="TypeHardware" Type="Model.TypeHardware" Multiplicity="1" />
+          <End Role="InfoHardware" Type="Model.InfoHardware" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeHardware">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="InfoHardware">
+              <PropertyRef Name="typeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrdersFirm_InfoHardware">
+          <End Role="InfoHardware" Type="Model.InfoHardware" Multiplicity="1" />
+          <End Role="OrdersFirm" Type="Model.OrdersFirm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InfoHardware">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrdersFirm">
+              <PropertyRef Name="hardwareId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrdersUser_InfoHardware">
+          <End Role="InfoHardware" Type="Model.InfoHardware" Multiplicity="1" />
+          <End Role="OrdersUser" Type="Model.OrdersUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InfoHardware">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrdersUser">
+              <PropertyRef Name="HardwareId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrdersFirm_OrdersExecute">
+          <End Role="OrdersExecute" Type="Model.OrdersExecute" Multiplicity="1" />
+          <End Role="OrdersFirm" Type="Model.OrdersFirm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrdersExecute">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrdersFirm">
+              <PropertyRef Name="executeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrdersUser_OrdersExecute">
+          <End Role="OrdersExecute" Type="Model.OrdersExecute" Multiplicity="1" />
+          <End Role="OrdersUser" Type="Model.OrdersUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrdersExecute">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrdersUser">
+              <PropertyRef Name="ExecuteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrdersUser_UserProfile">
+          <End Role="UserProfile" Type="Model.UserProfile" Multiplicity="1" />
+          <End Role="OrdersUser" Type="Model.OrdersUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="OrdersUser">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="webpages_UsersInRoles">
+          <End Role="webpages_Roles" Type="Model.webpages_Roles" Multiplicity="*" />
+          <End Role="UserProfile" Type="Model.UserProfile" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="ComputerFirmEntities">
+          <EntitySetMapping Name="BrandHardwares">
+            <EntityTypeMapping TypeName="Model.BrandHardware">
+              <MappingFragment StoreEntitySet="BrandHardware">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InfoFirms">
+            <EntityTypeMapping TypeName="Model.InfoFirm">
+              <MappingFragment StoreEntitySet="InfoFirm">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="address" ColumnName="address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InfoHardwares">
+            <EntityTypeMapping TypeName="Model.InfoHardware">
+              <MappingFragment StoreEntitySet="InfoHardware">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="numbAvailable" ColumnName="numbAvailable" />
+                <ScalarProperty Name="numbOrder" ColumnName="numbOrder" />
+                <ScalarProperty Name="cost" ColumnName="cost" />
+                <ScalarProperty Name="fname" ColumnName="fname" />
+                <ScalarProperty Name="typeId" ColumnName="typeId" />
+                <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+                <ScalarProperty Name="describe" ColumnName="describe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrdersExecutes">
+            <EntityTypeMapping TypeName="Model.OrdersExecute">
+              <MappingFragment StoreEntitySet="OrdersExecute">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="message" ColumnName="message" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrdersFirms">
+            <EntityTypeMapping TypeName="Model.OrdersFirm">
+              <MappingFragment StoreEntitySet="OrdersFirm">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="dateStart" ColumnName="dateStart" />
+                <ScalarProperty Name="numb" ColumnName="numb" />
+                <ScalarProperty Name="hardwareId" ColumnName="hardwareId" />
+                <ScalarProperty Name="firmId" ColumnName="firmId" />
+                <ScalarProperty Name="executeId" ColumnName="executeId" />
+                <ScalarProperty Name="dateExecution" ColumnName="dateExecution" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrdersUsers">
+            <EntityTypeMapping TypeName="Model.OrdersUser">
+              <MappingFragment StoreEntitySet="OrdersUser">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="dateStart" ColumnName="dateStart" />
+                <ScalarProperty Name="numb" ColumnName="numb" />
+                <ScalarProperty Name="HardwareId" ColumnName="HardwareId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ExecuteId" ColumnName="ExecuteId" />
+                <ScalarProperty Name="dateExecution" ColumnName="dateExecution" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tables">
+            <EntityTypeMapping TypeName="Model.Table">
+              <MappingFragment StoreEntitySet="Table">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeHardwares">
+            <EntityTypeMapping TypeName="Model.TypeHardware">
+              <MappingFragment StoreEntitySet="TypeHardware">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserProfiles">
+            <EntityTypeMapping TypeName="Model.UserProfile">
+              <MappingFragment StoreEntitySet="UserProfile">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="address" ColumnName="address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="webpages_Membership">
+            <EntityTypeMapping TypeName="Model.webpages_Membership">
+              <MappingFragment StoreEntitySet="webpages_Membership">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ConfirmationToken" ColumnName="ConfirmationToken" />
+                <ScalarProperty Name="IsConfirmed" ColumnName="IsConfirmed" />
+                <ScalarProperty Name="LastPasswordFailureDate" ColumnName="LastPasswordFailureDate" />
+                <ScalarProperty Name="PasswordFailuresSinceLastSuccess" ColumnName="PasswordFailuresSinceLastSuccess" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="PasswordChangedDate" ColumnName="PasswordChangedDate" />
+                <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+                <ScalarProperty Name="PasswordVerificationToken" ColumnName="PasswordVerificationToken" />
+                <ScalarProperty Name="PasswordVerificationTokenExpirationDate" ColumnName="PasswordVerificationTokenExpirationDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="webpages_OAuthMembership">
+            <EntityTypeMapping TypeName="Model.webpages_OAuthMembership">
+              <MappingFragment StoreEntitySet="webpages_OAuthMembership">
+                <ScalarProperty Name="Provider" ColumnName="Provider" />
+                <ScalarProperty Name="ProviderUserId" ColumnName="ProviderUserId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="webpages_Roles">
+            <EntityTypeMapping TypeName="Model.webpages_Roles">
+              <MappingFragment StoreEntitySet="webpages_Roles">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="webpages_UsersInRoles" TypeName="Model.webpages_UsersInRoles" StoreEntitySet="webpages_UsersInRoles">
+            <EndProperty Name="webpages_Roles">
+              <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="UserProfile">
+              <ScalarProperty Name="UserId" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

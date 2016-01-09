@@ -1,0 +1,55 @@
+﻿@model CFA.Models.OrdersUser
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h4>OrdersUser</h4>
+    </div>
+
+    <div class="list-group">
+        <a class="list-group-item">
+            <h4 class="list-group-item-heading">@Html.DisplayNameFor(model => model.dateStart)</h4>
+            <p class="list-group-item-text">@Html.DisplayFor(model => model.dateStart)</p>
+        </a>
+
+        <a class="list-group-item">
+            <h4 class="list-group-item-heading">@Html.DisplayNameFor(model => model.dateExecution)</h4>
+            <p class="list-group-item-text">@Html.DisplayFor(model => model.dateExecution)</p>
+        </a>
+
+        <a class="list-group-item">
+            <h4 class="list-group-item-heading">@Html.DisplayNameFor(model => model.numb)</h4>
+            <p class="list-group-item-text">@Html.DisplayFor(model => model.numb)</p>
+        </a>
+
+        <a class="list-group-item">
+            <h4 class="list-group-item-heading">@Html.DisplayNameFor(model => model.InfoHardware.name)</h4>
+            <p class="list-group-item-text">@Html.DisplayFor(model => model.InfoHardware.name)</p>
+        </a>
+
+        <a class="list-group-item">
+            <h4 class="list-group-item-heading">@Html.DisplayNameFor(model => model.UserProfile.UserName)</h4>
+            <p class="list-group-item-text">@Html.DisplayFor(model => model.UserProfile.UserName)</p>
+        </a>
+
+        <a class="list-group-item">
+            <h4 class="list-group-item-heading">@Html.DisplayNameFor(model => model.OrdersExecute.message)</h4>
+            <p class="list-group-item-text">@Html.DisplayFor(model => model.OrdersExecute.message)</p>
+        </a>
+    </div>
+
+    <div class="col-sm-1">
+        <a href="/Admin/OrdersUser/Edit/@Model.Id" class="btn btn-primary edit-button">Edit</a>
+    </div>
+
+    <div class="col-sm-1">
+        <a href="/Admin/OrdersUser/Index" class="btn btn-primary edit-button">Back</a>
+    </div>
+</div>
+
